@@ -1,0 +1,6 @@
+settings.ini
+venv/
+media/
+idea
+.DS_Store
+.coverage
