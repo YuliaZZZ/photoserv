@@ -9,7 +9,7 @@ install:
 	pip3 install -r requirements.txt
 
 test:
-	python3 manage.py test
+	python3 manage.py test serv
 
 test1:
 	pytest serv/tests/ --disable-warnings
@@ -30,11 +30,14 @@ celery-beat:
 	celery -A app beat -l info -S django
 
 test2:
-	coverage run --source='.' --omit=*/migrations/* manage.py test serv
+	coverage run --source='.' --omit=*/migrations/*,venv/* manage.py test serv
+
+coverage:
+	coverage report
 
 
 
 
 
 
-.PHONY : start migrate install celery-start test shell static celery-beat
+.PHONY : start migrate install celery-start test shell static celery-beat coverage

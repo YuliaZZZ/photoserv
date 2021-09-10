@@ -10,11 +10,9 @@ from serv.serializers.users import CreateUserSerializer
 
 class PhotoSerializer(serializers.ModelSerializer):
     owner = CreateUserSerializer(read_only=True)
-    photo_webp = serializers.SerializerMethodField(
-        default=serializers.URLField(), read_only=True
-    )
+    photo_webp = serializers.SerializerMethodField(read_only=True)
     min_size_photo = serializers.SerializerMethodField(
-        default=serializers.URLField(), read_only=True
+        read_only=True
     )
 
     class Meta:
@@ -60,7 +58,6 @@ class PhotoSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
     def get_photo_webp(self, obj):
-        print(obj.file.name)
         filename, file_extension = os.path.splitext(obj.file.name)
         min_file = obj.file.url.replace(file_extension, ".webp")
         return urljoin("http://127.0.0.1:8000/", min_file)

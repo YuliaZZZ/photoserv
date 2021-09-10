@@ -15,7 +15,7 @@ def files_directory(instance, filename):
 class Photo(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.RESTRICT,
+        on_delete=models.CASCADE,
         related_name="photo_owner"
     )
     title = models.CharField(null=False, max_length=255)
