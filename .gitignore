@@ -1,6 +1,10 @@
 settings.ini
 venv/
 media/
-idea
+.idea/
 .DS_Store
 .coverage
+__pycache__/
+
+*.py[cod]
+*.pyc
